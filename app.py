@@ -1,6 +1,6 @@
-from flask import Flask, render_template, request, redirect, session
 from database.db import (
     create_database,
+    insert_sample_data,
     add_employee,
     get_employees,
     delete_employee,
@@ -13,6 +13,7 @@ app = Flask(__name__)
 app.secret_key = "employee_management_secret"
 
 create_database()
+insert_sample_data()
 
 # ---------------- LOGIN ----------------
 @app.route("/")

@@ -142,3 +142,42 @@ def get_dashboard_data():
             "INSERT INTO employees(name, department, salary) VALUES(?,?,?)",
             employees
         )
+
+def insert_sample_data():
+    conn = sqlite3.connect("employee.db")
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT COUNT(*) FROM employees")
+
+    if cursor.fetchone()[0] == 0:
+
+        employees = [
+            ("Aarav Sharma","IT",65000),
+            ("Vivaan Singh","HR",48000),
+            ("Aditya Verma","Finance",72000),
+            ("Krishna Patel","Marketing",55000),
+            ("Rohan Gupta","IT",68000),
+            ("Arjun Yadav","Sales",50000),
+            ("Rahul Kumar","IT",60000),
+            ("Mohit Sharma","Finance",70000),
+            ("Aman Verma","HR",47000),
+            ("Karan Singh","Marketing",58000),
+            ("Sahil Gupta","Sales",52000),
+            ("Nikhil Jain","IT",69000),
+            ("Harsh Patel","Finance",74000),
+            ("Ayush Mishra","HR",49000),
+            ("Yash Kumar","Marketing",56000),
+            ("Priyansh Singh","IT",67000),
+            ("Ankit Sharma","Sales",53000),
+            ("Deepak Verma","Finance",76000),
+            ("Manish Gupta","HR",50000),
+            ("Pawan Sharma","IT",80000)
+        ]
+
+        cursor.executemany(
+            "INSERT INTO employees(name,department,salary) VALUES(?,?,?)",
+            employees
+        )
+
+    conn.commit()
+    conn.close()
