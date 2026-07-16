@@ -42,26 +42,59 @@ Performance Management
 
 <tbody>
 
-<tr><td>1</td><td>Pawan Sharma</td><td>IT</td><td>5 ⭐</td><td><span class="badge bg-success">Excellent</span></td></tr>
-<tr><td>2</td><td>Rohit Kumar</td><td>IT</td><td>4 ⭐</td><td><span class="badge bg-primary">Good</span></td></tr>
-<tr><td>3</td><td>Aman Gupta</td><td>HR</td><td>3 ⭐</td><td><span class="badge bg-warning text-dark">Average</span></td></tr>
-<tr><td>4</td><td>Rahul Singh</td><td>Finance</td><td>5 ⭐</td><td><span class="badge bg-success">Excellent</span></td></tr>
-<tr><td>5</td><td>Priya Verma</td><td>Marketing</td><td>4 ⭐</td><td><span class="badge bg-primary">Good</span></td></tr>
-<tr><td>6</td><td>Sneha Patel</td><td>Sales</td><td>4 ⭐</td><td><span class="badge bg-primary">Good</span></td></tr>
-<tr><td>7</td><td>Ankit Mishra</td><td>IT</td><td>5 ⭐</td><td><span class="badge bg-success">Excellent</span></td></tr>
-<tr><td>8</td><td>Neha Sharma</td><td>HR</td><td>3 ⭐</td><td><span class="badge bg-warning text-dark">Average</span></td></tr>
-<tr><td>9</td><td>Vikas Yadav</td><td>Finance</td><td>4 ⭐</td><td><span class="badge bg-primary">Good</span></td></tr>
-<tr><td>10</td><td>Simran Kaur</td><td>Marketing</td><td>5 ⭐</td><td><span class="badge bg-success">Excellent</span></td></tr>
-<tr><td>11</td><td>Arjun Mehta</td><td>Sales</td><td>3 ⭐</td><td><span class="badge bg-warning text-dark">Average</span></td></tr>
-<tr><td>12</td><td>Karan Malhotra</td><td>IT</td><td>5 ⭐</td><td><span class="badge bg-success">Excellent</span></td></tr>
-<tr><td>13</td><td>Riya Sharma</td><td>HR</td><td>4 ⭐</td><td><span class="badge bg-primary">Good</span></td></tr>
-<tr><td>14</td><td>Deepak Kumar</td><td>Finance</td><td>5 ⭐</td><td><span class="badge bg-success">Excellent</span></td></tr>
-<tr><td>15</td><td>Sakshi Gupta</td><td>Marketing</td><td>4 ⭐</td><td><span class="badge bg-primary">Good</span></td></tr>
-<tr><td>16</td><td>Nitin Verma</td><td>Sales</td><td>3 ⭐</td><td><span class="badge bg-warning text-dark">Average</span></td></tr>
-<tr><td>17</td><td>Aditi Singh</td><td>IT</td><td>5 ⭐</td><td><span class="badge bg-success">Excellent</span></td></tr>
-<tr><td>18</td><td>Mohit Jain</td><td>HR</td><td>4 ⭐</td><td><span class="badge bg-primary">Good</span></td></tr>
-<tr><td>19</td><td>Harsh Agarwal</td><td>Finance</td><td>5 ⭐</td><td><span class="badge bg-success">Excellent</span></td></tr>
-<tr><td>20</td><td>Kavya Sharma</td><td>Marketing</td><td>4 ⭐</td><td><span class="badge bg-primary">Good</span></td></tr>
+{% for emp in employees %}
+
+<tr>
+
+<td>{{ emp[0] }}</td>
+
+<td>{{ emp[1] }}</td>
+
+<td>{{ emp[2] }}</td>
+
+<td>
+
+{% if emp[0] <= 4 %}
+⭐⭐⭐⭐⭐
+{% elif emp[0] <= 8 %}
+⭐⭐⭐⭐
+{% elif emp[0] <= 12 %}
+⭐⭐⭐
+{% elif emp[0] <= 16 %}
+⭐⭐
+{% else %}
+⭐
+{% endif %}
+
+</td>
+
+<td>
+
+{% if emp[0] <= 4 %}
+
+<span class="badge bg-success">
+Excellent
+</span>
+
+{% elif emp[0] <= 8 %}
+
+<span class="badge bg-primary">
+Good
+</span>
+
+{% else %}
+
+<span class="badge bg-warning text-dark">
+Average
+</span>
+
+{% endif %}
+
+</td>
+
+</tr>
+
+{% endfor %}
 
 </tbody>
 
