@@ -38,26 +38,61 @@ Leave Management
 
 <tbody>
 
-<tr><td>1</td><td>Pawan Sharma</td><td>IT</td><td>Casual</td><td><span class="badge bg-success">Approved</span></td></tr>
-<tr><td>2</td><td>Rohit Kumar</td><td>IT</td><td>Sick</td><td><span class="badge bg-warning text-dark">Pending</span></td></tr>
-<tr><td>3</td><td>Aman Gupta</td><td>HR</td><td>Casual</td><td><span class="badge bg-success">Approved</span></td></tr>
-<tr><td>4</td><td>Rahul Singh</td><td>Finance</td><td>Emergency</td><td><span class="badge bg-danger">Rejected</span></td></tr>
-<tr><td>5</td><td>Priya Verma</td><td>Marketing</td><td>Sick</td><td><span class="badge bg-success">Approved</span></td></tr>
-<tr><td>6</td><td>Sneha Patel</td><td>Sales</td><td>Casual</td><td><span class="badge bg-warning text-dark">Pending</span></td></tr>
-<tr><td>7</td><td>Ankit Mishra</td><td>IT</td><td>Emergency</td><td><span class="badge bg-success">Approved</span></td></tr>
-<tr><td>8</td><td>Neha Sharma</td><td>HR</td><td>Casual</td><td><span class="badge bg-success">Approved</span></td></tr>
-<tr><td>9</td><td>Vikas Yadav</td><td>Finance</td><td>Sick</td><td><span class="badge bg-warning text-dark">Pending</span></td></tr>
-<tr><td>10</td><td>Simran Kaur</td><td>Marketing</td><td>Casual</td><td><span class="badge bg-success">Approved</span></td></tr>
-<tr><td>11</td><td>Arjun Mehta</td><td>Sales</td><td>Emergency</td><td><span class="badge bg-danger">Rejected</span></td></tr>
-<tr><td>12</td><td>Karan Malhotra</td><td>IT</td><td>Sick</td><td><span class="badge bg-success">Approved</span></td></tr>
-<tr><td>13</td><td>Riya Sharma</td><td>HR</td><td>Casual</td><td><span class="badge bg-warning text-dark">Pending</span></td></tr>
-<tr><td>14</td><td>Deepak Kumar</td><td>Finance</td><td>Emergency</td><td><span class="badge bg-success">Approved</span></td></tr>
-<tr><td>15</td><td>Sakshi Gupta</td><td>Marketing</td><td>Sick</td><td><span class="badge bg-success">Approved</span></td></tr>
-<tr><td>16</td><td>Nitin Verma</td><td>Sales</td><td>Casual</td><td><span class="badge bg-warning text-dark">Pending</span></td></tr>
-<tr><td>17</td><td>Aditi Singh</td><td>IT</td><td>Emergency</td><td><span class="badge bg-success">Approved</span></td></tr>
-<tr><td>18</td><td>Mohit Jain</td><td>HR</td><td>Sick</td><td><span class="badge bg-success">Approved</span></td></tr>
-<tr><td>19</td><td>Harsh Agarwal</td><td>Finance</td><td>Casual</td><td><span class="badge bg-danger">Rejected</span></td></tr>
-<tr><td>20</td><td>Kavya Sharma</td><td>Marketing</td><td>Sick</td><td><span class="badge bg-success">Approved</span></td></tr>
+{% for emp in employees %}
+
+<tr>
+
+<td>{{ emp[0] }}</td>
+
+<td>{{ emp[1] }}</td>
+
+<td>{{ emp[2] }}</td>
+
+<td>
+
+{% if loop.index % 3 == 0 %}
+
+Emergency
+
+{% elif loop.index % 2 == 0 %}
+
+Sick
+
+{% else %}
+
+Casual
+
+{% endif %}
+
+</td>
+
+<td>
+
+{% if loop.index % 4 == 0 %}
+
+<span class="badge bg-warning text-dark">
+Pending
+</span>
+
+{% elif loop.index % 5 == 0 %}
+
+<span class="badge bg-danger">
+Rejected
+</span>
+
+{% else %}
+
+<span class="badge bg-success">
+Approved
+</span>
+
+{% endif %}
+
+</td>
+
+</tr>
+
+{% endfor %}
 
 </tbody>
 

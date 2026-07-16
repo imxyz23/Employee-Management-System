@@ -34,26 +34,27 @@ Payroll Management
 
 <tbody>
 
-<tr><td>1</td><td>Pawan Sharma</td><td>IT</td><td>₹80,000</td><td>₹8,000</td><td>₹88,000</td></tr>
-<tr><td>2</td><td>Rohit Kumar</td><td>IT</td><td>₹75,000</td><td>₹7,500</td><td>₹82,500</td></tr>
-<tr><td>3</td><td>Aman Gupta</td><td>HR</td><td>₹45,000</td><td>₹4,500</td><td>₹49,500</td></tr>
-<tr><td>4</td><td>Rahul Singh</td><td>Finance</td><td>₹60,000</td><td>₹6,000</td><td>₹66,000</td></tr>
-<tr><td>5</td><td>Priya Verma</td><td>Marketing</td><td>₹55,000</td><td>₹5,500</td><td>₹60,500</td></tr>
-<tr><td>6</td><td>Sneha Patel</td><td>Sales</td><td>₹50,000</td><td>₹5,000</td><td>₹55,000</td></tr>
-<tr><td>7</td><td>Ankit Mishra</td><td>IT</td><td>₹70,000</td><td>₹7,000</td><td>₹77,000</td></tr>
-<tr><td>8</td><td>Neha Sharma</td><td>HR</td><td>₹48,000</td><td>₹4,800</td><td>₹52,800</td></tr>
-<tr><td>9</td><td>Vikas Yadav</td><td>Finance</td><td>₹65,000</td><td>₹6,500</td><td>₹71,500</td></tr>
-<tr><td>10</td><td>Simran Kaur</td><td>Marketing</td><td>₹52,000</td><td>₹5,200</td><td>₹57,200</td></tr>
-<tr><td>11</td><td>Arjun Mehta</td><td>Sales</td><td>₹47,000</td><td>₹4,700</td><td>₹51,700</td></tr>
-<tr><td>12</td><td>Karan Malhotra</td><td>IT</td><td>₹90,000</td><td>₹9,000</td><td>₹99,000</td></tr>
-<tr><td>13</td><td>Riya Sharma</td><td>HR</td><td>₹46,000</td><td>₹4,600</td><td>₹50,600</td></tr>
-<tr><td>14</td><td>Deepak Kumar</td><td>Finance</td><td>₹62,000</td><td>₹6,200</td><td>₹68,200</td></tr>
-<tr><td>15</td><td>Sakshi Gupta</td><td>Marketing</td><td>₹53,000</td><td>₹5,300</td><td>₹58,300</td></tr>
-<tr><td>16</td><td>Nitin Verma</td><td>Sales</td><td>₹49,000</td><td>₹4,900</td><td>₹53,900</td></tr>
-<tr><td>17</td><td>Aditi Singh</td><td>IT</td><td>₹78,000</td><td>₹7,800</td><td>₹85,800</td></tr>
-<tr><td>18</td><td>Mohit Jain</td><td>HR</td><td>₹51,000</td><td>₹5,100</td><td>₹56,100</td></tr>
-<tr><td>19</td><td>Harsh Agarwal</td><td>Finance</td><td>₹68,000</td><td>₹6,800</td><td>₹74,800</td></tr>
-<tr><td>20</td><td>Kavya Sharma</td><td>Marketing</td><td>₹56,000</td><td>₹5,600</td><td>₹61,600</td></tr>
+{% for emp in employees %}
+
+<tr>
+
+<td>{{ emp[0] }}</td>
+
+<td>{{ emp[1] }}</td>
+
+<td>{{ emp[2] }}</td>
+
+<td>₹{{ emp[3] }}</td>
+
+<td>₹{{ (emp[3] * 10) // 100 }}</td>
+
+<td>
+₹{{ emp[3] + ((emp[3] * 10) // 100) }}
+</td>
+
+</tr>
+
+{% endfor %}
 
 </tbody>
 
