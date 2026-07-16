@@ -110,3 +110,35 @@ def get_dashboard_data():
     conn.close()
 
     return total_employees, total_departments, total_salary
+
+    cursor.execute("SELECT COUNT(*) FROM employees")
+    count = cursor.fetchone()[0]
+
+    if count == 0:
+        employees = [
+            ("Pawan Sharma","IT",80000),
+            ("Rohit Kumar","IT",75000),
+            ("Aman Gupta","HR",45000),
+            ("Rahul Singh","Finance",60000),
+            ("Priya Verma","Marketing",55000),
+            ("Sneha Patel","Sales",50000),
+            ("Ankit Mishra","IT",70000),
+            ("Neha Sharma","HR",48000),
+            ("Vikas Yadav","Finance",65000),
+            ("Simran Kaur","Marketing",52000),
+            ("Arjun Mehta","Sales",47000),
+            ("Karan Malhotra","IT",90000),
+            ("Riya Sharma","HR",46000),
+            ("Deepak Kumar","Finance",62000),
+            ("Sakshi Gupta","Marketing",53000),
+            ("Nitin Verma","Sales",49000),
+            ("Aditi Singh","IT",78000),
+            ("Mohit Jain","HR",51000),
+            ("Harsh Agarwal","Finance",68000),
+            ("Kavya Sharma","Marketing",56000)
+        ]
+
+        cursor.executemany(
+            "INSERT INTO employees(name, department, salary) VALUES(?,?,?)",
+            employees
+        )

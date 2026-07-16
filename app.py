@@ -14,7 +14,6 @@ app.secret_key = "employee_management_secret"
 
 create_database()
 
-
 # ---------------- LOGIN ----------------
 @app.route("/")
 def login_page():
@@ -53,9 +52,13 @@ def dashboard():
         total_salary=total_salary
     )
 
+
 # ---------------- EMPLOYEES ----------------
 @app.route("/employees")
 def employees():
+
+    if "user" not in session:
+        return redirect("/")
 
     search = request.args.get("search", "")
 
@@ -68,9 +71,12 @@ def employees():
     )
 
 
-# ---------------- ADD ----------------
+# ---------------- ADD EMPLOYEE ----------------
 @app.route("/add_employee", methods=["POST"])
 def add():
+
+    if "user" not in session:
+        return redirect("/")
 
     name = request.form["name"]
     department = request.form["department"]
@@ -85,6 +91,9 @@ def add():
 @app.route("/delete/<int:id>")
 def delete(id):
 
+    if "user" not in session:
+        return redirect("/")
+
     delete_employee(id)
 
     return redirect("/employees")
@@ -94,6 +103,9 @@ def delete(id):
 @app.route("/edit/<int:id>")
 def edit(id):
 
+    if "user" not in session:
+        return redirect("/")
+
     employee = get_employee(id)
 
     return render_template("edit_employee.html", employee=employee)
@@ -102,6 +114,9 @@ def edit(id):
 # ---------------- UPDATE ----------------
 @app.route("/update/<int:id>", methods=["POST"])
 def update(id):
+
+    if "user" not in session:
+        return redirect("/")
 
     name = request.form["name"]
     department = request.form["department"]
@@ -115,30 +130,71 @@ def update(id):
 # ---------------- ATTENDANCE ----------------
 @app.route("/attendance")
 def attendance():
-    return render_template("attendance.html")
+
+    if "user" not in session:
+        return redirect("/")
+
+    employees = get_employees()
+
+    return render_template(
+        "attendance.html",
+        employees=employees
+    )
 
 
+# ---------------- LEAVE ----------------
 @app.route("/leave")
 def leave():
-    return render_template("leave.html")
+
+    if "user" not in session:
+        return redirect("/")
+
+    employees = get_employees()
+
+    return render_template(
+        "leave.html",
+        employees=employees
+    )
 
 
+# ---------------- PAYROLL ----------------
 @app.route("/payroll")
 def payroll():
-    return render_template("payroll.html")
+
+    if "user" not in session:
+        return redirect("/")
+
+    employees = get_employees()
+
+    return render_template(
+        "payroll.html",
+        employees=employees
+    )
 
 
-
+# ---------------- PERFORMANCE ----------------
 @app.route("/performance")
 def performance():
-    return render_template("performance.html")
 
+    if "user" not in session:
+        return redirect("/")
+
+    employees = get_employees()
+
+    return render_template(
+        "performance.html",
+        employees=employees
+    )
+
+
+# ---------------- LOGOUT ----------------
 @app.route("/logout")
 def logout():
 
     session.clear()
 
     return redirect("/")
+
 
 # ---------------- RUN ----------------
 if __name__ == "__main__":
